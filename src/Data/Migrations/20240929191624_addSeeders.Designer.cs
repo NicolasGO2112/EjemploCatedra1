@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EjemploCatedra1.src.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240929185220_firstMigration")]
-    partial class firstMigration
+    [Migration("20240929191624_addSeeders")]
+    partial class addSeeders
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
