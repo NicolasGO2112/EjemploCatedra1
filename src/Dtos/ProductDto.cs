@@ -13,8 +13,8 @@ namespace EjemploCatedra1.src.Dtos
 
         [Required]
         public required string Code { get; set;}
-
-       
+        
+        [StringLength(100, MinimumLength = 3)]
         public required string Name { get; set; }
 
         [RegularExpression(@"POLERAS|PANTALONES|SOMBREROS")]

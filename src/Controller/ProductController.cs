@@ -39,6 +39,54 @@ namespace EjemploCatedra1.src.Controller
             }
 
         }
+        [HttpPut]
+        [Route("{id}")]
+
+        public async Task<IActionResult> Put([FromRoute] int id , [FromBody] UpdateProductDto updateProductDto)
+        { 
+            var productModel = await _productRepository.Put(id, updateProductDto);
+            if(productModel == null)
+            {
+                return NotFound();
+            }
+            return Ok(productModel.ToProductDto());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _productRepository.GetAll();
+            var productDto = products.Select(p => p.ToProductDto());
+            return Ok(productDto);
+        
+        }
+
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetById(int id)
+        {
+            var product = await _productRepository.GetById(id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product.ToProductDto());
+        }
+
+
+        [HttpDelete]
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = _productRepository.Delete(id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
+
 
     }
 }
